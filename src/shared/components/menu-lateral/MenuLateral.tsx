@@ -1,8 +1,8 @@
 import { Avatar, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import { Box } from '@mui/system';
-
-import { useDrawerContext } from '../../contexts';
+import { DarkMode } from '@mui/icons-material';
+import { useAppThemeContext, useDrawerContext } from '../../contexts';
 
 interface IListItemLinkProps {
   to: string;
@@ -39,7 +39,7 @@ export const MenuLateral: React.FC = ({ children }) => {
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   const { isDrawerOpen, drawerOptions, toggleDrawerOpen } = useDrawerContext();
-
+  const { toggleTheme } = useAppThemeContext();
   return (
     <>
       <Drawer open={isDrawerOpen} variant={smDown ? 'temporary' : 'permanent'} onClose={toggleDrawerOpen}>
@@ -48,7 +48,7 @@ export const MenuLateral: React.FC = ({ children }) => {
           <Box width="100%" height={theme.spacing(20)} display="flex" alignItems="center" justifyContent="center">
             <Avatar
               sx={{ height: theme.spacing(12), width: theme.spacing(12) }}
-              src="https://image.khaleejtimes.com/?uuid=c6164f6d-a0a6-5492-96c9-395b0455f1cf&function=cropresize&type=preview&source=false&q=75&crop_w=0.99999&crop_h=0.74971&x=0&y=0&width=1200&height=675"
+              src='https://image.khaleejtimes.com/?uuid=c6164f6d-a0a6-5492-96c9-395b0455f1cf&function=cropresize&type=preview&source=false&q=75&crop_w=0.99999&crop_h=0.74971&x=0&y=0&width=1200&height=675'
             />
           </Box>
 
@@ -67,7 +67,16 @@ export const MenuLateral: React.FC = ({ children }) => {
               ))}
             </List>
           </Box>
-
+          <Box>
+            <List component="nav">
+              <ListItemButton onClick={toggleTheme}>
+                <ListItemIcon>
+                  <Icon>dark_mode</Icon>
+                </ListItemIcon>
+                <ListItemText primary='Alternar Tema' />
+              </ListItemButton>
+            </List>
+          </Box>
         </Box>
       </Drawer>
 
