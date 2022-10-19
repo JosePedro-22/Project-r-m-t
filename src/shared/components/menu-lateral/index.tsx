@@ -1,7 +1,7 @@
 import { Avatar, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import { Box } from '@mui/system';
-import { DarkMode } from '@mui/icons-material';
+// import { DarkMode } from '@mui/icons-material';
 import { useAppThemeContext, useDrawerContext } from '../../contexts';
 
 interface IListItemLinkProps {
